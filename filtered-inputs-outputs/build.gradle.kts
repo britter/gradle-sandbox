@@ -1,43 +1,27 @@
-plugins {
-    distribution
-}
-
 tasks {
-    val webpack by registering {
-        inputs.files(fileTree("src/main").exclude("**/__tests__/**"))
-            .withPropertyName("uiSourceDirectory")
-            .withPathSensitivity(PathSensitivity.RELATIVE)
-
-        outputs.dir("$buildDir/webpack")
+    register("taskA") {
+        inputs.files(fileTree("src") { include("input-a.txt") } )
+        outputs.files(fileTree("src") { exclude("input**") })
 
         doLast {
-            project.copy {
-                from("src/main") {
-                    exclude("**/__tests__/**")
-                }
-                into("$buildDir/webpack")
+            copy {
+                from("src/input-a.txt")
+                into("src")
+                rename { "output-a.txt" }
             }
         }
     }
 
-    val updateSnapshots by registering {
-        inputs.files(fileTree("src/main") { exclude("**.js.snap") })
-            .withPropertyName("source")
-            .withPathSensitivity(PathSensitivity.RELATIVE)
-
-        outputs.files(fileTree("src/main") { include("**.js.snap") })
-            .withPropertyName("snapshots")
+    register("taskB") {
+        inputs.files(fileTree("src") { include("input-b.txt") })
+        outputs.files("$buildDir/output-b.txt")
 
         doLast {
-            println("Checking snapshot files")
-        }
-    }
-}
-
-distributions {
-    main {
-        contents {
-            from(tasks["webpack"])
+            copy {
+                from("src/input-b.txt")
+                into("$buildDir")
+                rename { "output-b.txt" }
+            }
         }
     }
 }
