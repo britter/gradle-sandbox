@@ -1,0 +1,10 @@
+diff --git a/intellij-included-platforms/settings.gradle.kts b/intellij-included-platforms/settings.gradle.kts
+index 93106be..a8687ac 100644
+--- a/intellij-included-platforms/settings.gradle.kts
++++ b/intellij-included-platforms/settings.gradle.kts
+@@ -1,4 +1,4 @@
+ rootProject.name = "intellij-included-platforms"
+ 
+ include("lib")
+-includeBuild("included-build")
++includeBuild("included-build/platform")
