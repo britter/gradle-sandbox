@@ -7,6 +7,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.codehaus.groovy:groovy:3.0.7")
     testImplementation("org.spockframework:spock-core:2.0-M4-groovy-3.0")
 }
 
@@ -15,6 +16,6 @@ tasks.test {
 }
 
 tasks.register<JavaExec>("exec") {
-    classpath += sourceSets.test.get().runtimeClasspath
-    mainClass.set("com.example.SimpleSpec")
+    classpath += sourceSets.main.get().runtimeClasspath
+    mainClass.set("com.example.Foo")
 }
