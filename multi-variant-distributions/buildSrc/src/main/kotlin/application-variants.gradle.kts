@@ -9,7 +9,11 @@ extensions.add("applicationVariants", extension)
 
 extension.all {
     val variantClasspath = files(classpath, tasks.jar, configurations.runtimeClasspath)
-    val variantStartScripts by tasks.registering(CreateStartScripts::class) {
+    val startScripts by tasks.getting(CreateStartScripts::class)
+    val variantStartScripts by tasks.creating(CreateStartScripts::class) {
+        applicationName = startScripts.applicationName
+        startScripts.mainClass.let { mainClass.set(it) }
+        outputDir = startScripts.outputDir
         classpath = variantClasspath
     }
 
