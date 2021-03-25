@@ -1,3 +1,3 @@
 rootProject.name = "multi-variant-distributions"
 
-include("app", "ui", "test")
+include("app", "ui", "test", "ui-test")

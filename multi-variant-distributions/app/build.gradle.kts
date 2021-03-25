@@ -1,5 +1,8 @@
+import org.gradle.jvm.application.tasks.CreateStartScripts
+
 plugins {
     id("java-application-conventions")
+    `application-variants`
 }
 
 application {
@@ -7,11 +10,21 @@ application {
     mainClass.set("example.App")
 }
 
-dependencies {
-    implementation("org.apache.commons:commons-lang3:3.11")
+val ui by configurations.creating
+
+applicationVariants {
+    create("withUi") {
+        classpath.from(ui)
+    }
 }
 
-artifacts {
-    val installDist by tasks.existing(Sync::class)
-    add("default", installDist.map { it.destinationDir })
+dependencies {
+    implementation("org.apache.commons:commons-lang3:3.11")
+    ui(project(":ui"))
+}
+
+tasks.register("dumpConf") {
+    doFirst {
+        configurations.forEach { println(it) }
+    }
 }
