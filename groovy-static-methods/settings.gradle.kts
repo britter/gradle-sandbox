@@ -8,3 +8,11 @@
  */
 
 rootProject.name = "spock-fields-methods"
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
+
+include("app", "data", "model")
