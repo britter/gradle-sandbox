@@ -42,6 +42,8 @@ tasks.test {
 testing {
     suites {
         register<JvmTestSuite>("integrationTest") {
+            useJUnit()
+
             dependencies {
                 implementation(project)
             }
