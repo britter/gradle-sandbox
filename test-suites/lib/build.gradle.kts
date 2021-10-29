@@ -41,17 +41,16 @@ tasks.test {
 
 testing {
     suites {
-        register("integrationTest") {
+        register<JvmTestSuite>("integrationTest") {
             dependencies {
                 implementation(project)
             }
 
             targets {
                 all {
-                    // doesn't work because testTask is not available
-//                    testTask.configure {
-//                        shouldRunAfter(test)
-//                    }
+                    testTask.configure {
+                        shouldRunAfter(tasks.test)
+                    }
                 }
             }
         }
