@@ -1,6 +1,6 @@
 # buildSrc-included-build-dependency
 
-Sample for showing problems with Intellij sync when buildSrc depends on a module from an included build.
+Sample for showing problems with Intellij sync when buildSrc depends on a module from an included build, see also https://github.com/gradle/gradle/issues/18984.
 Synchronizing this project in IntelliJ 2021.2.3 will fail with:
 
 ```
