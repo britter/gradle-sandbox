@@ -20,4 +20,5 @@ codenarc {
             BracesForTryCatchFinally
         }
     """.trimIndent())
+    reportFormat = "text"
 }
