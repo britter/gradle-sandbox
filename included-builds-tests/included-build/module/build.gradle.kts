@@ -2,6 +2,8 @@ plugins {
     groovy
 }
 
+group = "example"
+
 repositories {
     mavenCentral()
 }
