@@ -1,6 +1,6 @@
 # included-builds-tests
 
-This is a reproducer project for...
+This is a reproducer project for https://youtrack.jetbrains.com/issue/IDEA-307111
 
 ## Project structure
 
