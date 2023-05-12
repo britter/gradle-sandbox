@@ -46,6 +46,12 @@ abstract class CustomRule : ComponentMetadataRule {
         context.details.attributes.keySet().forEach {
             println("$it:${context.details.attributes.getAttribute(it)}")
         }
+        context.details.allVariants {
+            println("Variant:$this")
+            attributes.keySet().forEach {
+                println("$it:${context.details.attributes.getAttribute(it)}")
+            }
+        }
     }
 
 }
