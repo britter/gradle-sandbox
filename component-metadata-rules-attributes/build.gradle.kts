@@ -22,13 +22,6 @@ repositories {
     }
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
-}
-
-
 val trivy by configurations.creating
 
 dependencies {
